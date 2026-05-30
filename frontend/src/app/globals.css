@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Fonts */
+  --font-sans: "MonaSans", sans-serif;     /* default */
+  --font-playfair: "Playfair", serif;      /* custom */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Fonts */
+@font-face {
+  font-family: "MonaSans";
+  src: url("/fonts/MonaSans.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair";
+  src: url("/fonts/Playfair.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Global styles */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);   /* IMPORTANT */
+  background-image: url("/images/banner/BG.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+}
