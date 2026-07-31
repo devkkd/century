@@ -117,7 +117,6 @@ export default function EnquiryForm() {
             <span>→</span>
           </button>
         </div>
-
       </div>
     </section>
   );
