@@ -9,15 +9,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Playfair_Display } from "next/font/google";
 import { categories, getCategoryBySlug } from "@/data/collectionData";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair",
-});
+
 
 // Pre-render every category at build time.
 export function generateStaticParams() {
@@ -30,7 +24,7 @@ export default async function CategoryPage({ params }) {
   if (!category) return notFound();
 
   return (
-    <main className={`${playfair.variable} category-page`}>
+   <main className="category-page">
       <div className="container">
         <div className="eyebrow-pill center">COLLECTION</div>
 
@@ -96,6 +90,13 @@ export default async function CategoryPage({ params }) {
       </div>
 
       <style >{`
+      @font-face {
+  font-family: "Playfair Local";
+  src: url("/fonts/Playfair.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
         .category-page {
           --color-green: #017574;
           --color-dark: #004342;
@@ -103,7 +104,7 @@ export default async function CategoryPage({ params }) {
           --color-border: rgba(0, 18, 18, 0.1);
           --max-width: 1400px;
           --side-padding: 32px;
-          --font-heading: var(--font-playfair), "Playfair Display", serif;
+         --font-heading: "Playfair Local", "Playfair Display", serif;
           --font-body: "Mona Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
             Arial, sans-serif;
 
