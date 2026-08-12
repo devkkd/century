@@ -1,66 +1,134 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { Search } from 'lucide-react'; 
+import Image from "next/image";
+import Link from "next/link";
+import { Search } from "lucide-react";
 
 export default function Header() {
   const navLinks = [
-    { name: 'About Us', href: '/about' },
-    { name: 'Collection', href: '/collection' },
-    { name: 'Shop Products', href: '/shop' },
-    { name: 'Our History', href: '/history' },
-    { name: 'Our Craft', href: '/craft' },
-    { name: 'Responsibilities', href: '/responsibilities' },
-    { name: 'Compliance', href: '/compliance' },
+    { name: "About Us", href: "/about" },
+    { name: "Collection", href: "/collection" },
+    // { name: "Shop Products", href: "/shop" },
+    { name: "Our History", href: "/history" },
+    { name: "Our Craft", href: "/craft" },
+    { name: "Responsibilities", href: "/responsibilities" },
+    { name: "Compliance", href: "/compliance" },
   ];
 
   return (
-    <header className="w-full bg-transparent absolute top-0 left-0 z-50">
-      <div className="max-w-[1600px] mx-auto flex items-center justify-between px-6 lg:px-12 h-24">
-        
-        {/* Logo Section - self-start pins the straight edge of your SVG to the top */}
-        <div className="relative self-start">
-          <Link href="/">
-            <Image 
-              src="/images/logo/Centurylogo.svg" 
-              alt="Century Overseas" 
-              /* Adjust width/height depending on the exact dimensions of your SVG */
-              width={110} 
-              height={140} 
-              className="object-contain"
+    <header className="absolute top-0 left-0 z-50 w-full bg-transparent">
+      <div className="w-full h-[82px] flex items-start">
+
+        {/* ================= LEFT HEADER ================= */}
+        <div className="w-[63%] h-full flex items-center pl-[55px] pr-[25px]">
+
+          {/* Logo */}
+          <Link
+            href="/"
+            className="relative self-start flex-shrink-0 z-10"
+          >
+            <Image
+              src="/images/logo/Centurylogo.svg"
+              alt="Century Overseas"
+              width={105}
+              height={125}
+              className="w-[105px] h-auto object-contain"
               priority
             />
           </Link>
+
+          {/* Navigation */}
+          <nav className="hidden xl:flex flex-1 items-center justify-center gap-[22px] ml-[35px]">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="
+                  text-[13px]
+                  font-medium
+                  text-[#202020]
+                  uppercase
+                  whitespace-nowrap
+                  tracking-[0.01em]
+                  hover:text-[#017574]
+                  transition-colors
+                  duration-200
+                "
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
         </div>
 
-        {/* Navigation Links - Text made smaller (text-[11px]) */}
-        <nav className="hidden xl:flex items-center gap-6 text-[11px] font-medium text-gray-700 uppercase tracking-widest ml-8">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              href={link.href}
-              className="hover:text-[#017574] transition-colors duration-200"
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
+        {/* ================= RIGHT HEADER ================= */}
+        <div
+          className="
+            w-[37%]
+            h-full
+            flex
+            items-center
+            justify-center
+            gap-[14px]
+            px-[18px]
+          "
+        >
+          {/* Search */}
+          <div
+            className="
+              hidden md:flex
+              items-center
+              bg-white
+              rounded-full
+              h-[38px]
+              flex-1
+              max-w-[220px]
+              px-[14px]
+              shadow-[0_1px_4px_rgba(0,0,0,0.08)]
+            "
+          >
+            <Search
+              size={15}
+              strokeWidth={1.5}
+              className="text-[#7b8b8b] flex-shrink-0"
+            />
 
-        {/* Right Section: Search & Button */}
-        <div className="flex items-center gap-4 ml-auto">
-          {/* Search Bar - Scaled down slightly to match smaller text */}
-          <div className="hidden md:flex items-center bg-transparent border border-gray-300 rounded-full px-4 py-2 w-56 focus-within:border-[#017574] transition-colors">
-            <Search className="w-3.5 h-3.5 text-gray-400" />
-            <input 
-              type="text" 
-              placeholder="Search..." 
-              className="bg-transparent border-none outline-none ml-2 w-full text-[11px] text-gray-700 placeholder-gray-400"
+            <input
+              type="text"
+              placeholder="Search..."
+              className="
+                w-full
+                ml-[9px]
+                bg-transparent
+                border-none
+                outline-none
+                text-[10px]
+                text-[#333]
+                placeholder:text-[#9a9a9a]
+              "
             />
           </div>
 
-          {/* Request Quote Button */}
-          <button className="bg-[#017574] hover:bg-[#015a59] text-white px-6 py-2 rounded-full text-[11px] font-semibold transition-colors shadow-sm whitespace-nowrap tracking-wide">
-            REQUEST QUOTE
-          </button>
+          {/* Quote Button */}
+         <Link
+  href="/request"
+  className="
+    h-[38px]
+    bg-[#017574]
+    hover:bg-[#005f5e]
+    text-white
+    rounded-full
+    px-[21px]
+    text-[9px]
+    font-semibold
+    whitespace-nowrap
+    transition-colors
+    duration-200
+    inline-flex
+    items-center
+    justify-center
+  "
+>
+  REQUEST QUOTE
+</Link>
         </div>
 
       </div>

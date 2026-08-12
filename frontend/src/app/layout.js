@@ -1,6 +1,8 @@
-import ContactSection from '@/components/ContactSection';
 import './globals.css';
-import Header from '@/components/Header'; // Adjust the import path based on your folder structure
+import Header from '@/components/Header';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
+
 
 export const metadata = {
   title: 'Your Project Title',
@@ -12,11 +14,15 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="relative min-h-screen">
         <Header />
-        {/* Add padding-top to your main content so it doesn't get completely hidden behind the absolute header if you don't want it to overlap entirely */}
+
         <main className="pt-28">
           {children}
         </main>
-        <ContactSection/>
+
+ 
+        <ContactSection />
+       
+        <Footer />
       </body>
     </html>
   );

@@ -1,49 +1,121 @@
 "use client";
 
-import React, { useState } from 'react';
-import Image from 'next/image';
+import React, { useState } from "react";
+import Image from "next/image";
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
+});
 
 // --- DATA: Chapters ---
 const chaptersData = [
-  {
-    id: 1,
-    label: 'CHAPTER 1 - THE ANCIENT STORY OF PAPER',
-    title: <>Paper <span className="italic font-medium">Began</span> as a Secret</>,
-    desc: [
-      <React.Fragment key="1">The history of paper is deeply intertwined with the history of human culture and civilisation.</React.Fragment>,
-      <React.Fragment key="2"><strong>The Egyptians, the Greeks, and the Romans wrote on 'papyrus'</strong> a paper-like material made from the pith of the papyrus plant.<br />The paper we know today was first developed and used in China, where it served as the most important carrier of information since its invention.</React.Fragment>,
-      <React.Fragment key="3">As populations grew and the demand for knowledge, education, and information on a large scale intensified, so did the production of paper. In earlier times, paper was considered a valuable product even an art form often surrounded by secrecy because of the outstanding advantages it gave to those who mastered its production.</React.Fragment>,
-      <React.Fragment key="4"><strong>Handmade paper in India dates back as far as the third century BCE.</strong></React.Fragment>,
-      <React.Fragment key="5">The art of handmade paper-making is a traditional craft, passed down through generations of a specific artisan class. These artisans are known as <strong>'Kagzi'</strong> a term derived from the Urdu word 'kavas', meaning paper.</React.Fragment>
-    ],
-    image: '/images/pages/History1.png'
-  },
-  {
-    id: 2,
-    label: 'CHAPTER 2 - THE KAGZI COMMUNITY',
-    title: 'A Community Named After the Thing They Made',
-    desc: [
-      <React.Fragment key="1">The Kagzi community has been the custodian of India's handmade paper tradition since antiquity. Unfortunately, their numbers have dwindled over the centuries as industrial paper production erased the need for their labour in most places. But not all places.</React.Fragment>,
-      <React.Fragment key="2">A small group of Kagzis settled thousands of years ago in Sanganer, near Jaipur. This community became the primary custodians of the handmade paper industry in the region. The history of the Kagzi in Sanganer can be traced back to the 14th century, during the rule of Firoz Shah Tughlaq. Even then, the handmade paper crafted by them was used for official documents, miniatures, calligraphy, the Holy Quran, and account books.</React.Fragment>,
-      <React.Fragment key="3">In the 16th century, Raja Man Singh the ruler of Amber recognised the value of the Kagzi community and invited them to settle in Sanganer. He established them on the banks of the Saraswati River, where clear water was abundant — an essential resource for paper-making. Over time, Sanganer emerged as one of North India's largest and most important paper-producing centres.</React.Fragment>,
-      <React.Fragment key="4">It is from this lineage — this unbroken chain of craft, community, and place that Century Papers draws its identity. We are not inspired by the Kagzi tradition. We are part of it.</React.Fragment>
-    ],
-    image: '/images/pages/History22.png'
-  },
-  {
-    id: 3,
-    label: 'CHAPTER 3 THE CENTURY PAPERS STORY',
-    title: 'From a Family Workshop to a Global Supplier',
-    desc: [
-      <React.Fragment key="1">The roots of Century Papers stretch back to 1980, when the family began making paper at home the smallest possible scale of an ancient craft.</React.Fragment>,
-      <React.Fragment key="2">Through the 1980s and early 1990s, the work grew from home production into part-manufacturing, deepening skill and expanding the product range.</React.Fragment>,
-      <React.Fragment key="3">On the 1st of January 2000, Century Papers was formally established as a dedicated paper factory a milestone that marked the beginning of a structured, professional operation rooted in the same craft values the family had always held.</React.Fragment>,
-      <React.Fragment key="4">By 2006, the quality and consistency of the workshop's output had attracted international attention. Century Papers began exporting paper and paper products directly to buyers overseas and has not stopped since.</React.Fragment>
-    ],
-    image: '/images/pages/History3.png'
-  }
-];
+ {
+  id: 1,
+  label: "CHAPTER 1 - THE ANCIENT STORY OF PAPER",
 
+  title: (
+    <>
+      Paper <span className="heading-italic">Began</span> as a Secret
+    </>
+  ),
+
+  desc: [
+    <React.Fragment key="1">
+      These artisans are known as <strong>"Kagzi's"</strong>. The name is
+      derived from the Urdu word <strong>'Kavas'</strong>, which means paper.
+      The size of this community has decreased in the last few years. There is
+      a small area of 'Kagzi' in Sanganer near Jaipur, where a section of this
+      community had settled thousands of years ago.
+    </React.Fragment>,
+
+    <React.Fragment key="2">
+      The <strong>'Kagzi' community in Sanganer</strong> is the primary owner
+      of the handmade paper industry in the town. Our history goes back to the
+      14th century when ruler Firoze Shah Tughlaq was there.
+    </React.Fragment>,
+
+    <React.Fragment key="3">
+      Even in those days, handmade paper made by them was used to make copies
+      of official documents, miniatures, calligraphy and Holy Quran, and to
+      maintain account books.
+    </React.Fragment>,
+  ],
+
+  image: "/images/history/2.png",
+},
+
+  {
+  id: 2,
+  label: "CHAPTER 2 - THE KAGZI COMMUNITY",
+
+  title: (
+    <>
+      A Community Named <span className="heading-italic">After</span> the Thing
+      They Made
+    </>
+  ),
+
+  desc: [
+    <React.Fragment key="1">
+      In the 16th century, Raja Man Singh, the then ruler of Ambar, brought
+      the Kagzi in Sanganer and settled them on the banks of Saraswati river,
+      where clear water was easily available.
+    </React.Fragment>,
+
+    <React.Fragment key="2">
+      Thus, this city has emerged as one of North India's largest paper
+      producing centers.
+    </React.Fragment>,
+  ],
+
+  image: "/images/history/4.png",
+},
+
+  // {
+  //   id: 3,
+  //   label: "CHAPTER 3 THE CENTURY PAPERS STORY",
+
+  //   title: (
+  //     <>
+  //       From a Family <span className="heading-italic">Workshop</span> to a Global
+  //       Supplier
+  //     </>
+  //   ),
+
+  //   desc: [
+  //     <React.Fragment key="1">
+  //       The roots of Century Papers stretch back to 1980, when the family began
+  //       making paper at home the smallest possible scale of an ancient craft.
+  //     </React.Fragment>,
+
+  //     <React.Fragment key="2">
+  //       Through the 1980s and early 1990s, the work grew from home production
+  //       into part-manufacturing, deepening skill and expanding the product
+  //       range.
+  //     </React.Fragment>,
+
+  //     <React.Fragment key="3">
+  //       On the 1st of January 2000, Century Papers was formally established as a
+  //       dedicated paper factory a milestone that marked the beginning of a
+  //       structured, professional operation rooted in the same craft values the
+  //       family had always held.
+  //     </React.Fragment>,
+
+  //     <React.Fragment key="4">
+  //       By 2006, the quality and consistency of the workshop's output had
+  //       attracted international attention. Century Papers began exporting paper
+  //       and paper products directly to buyers overseas and has not stopped
+  //       since.
+  //     </React.Fragment>,
+  //   ],
+
+  //   image: "/images/pages/History3.png",
+  // },
+];
 // --- DATA: Timeline ---
 const timelineData = [
   {
@@ -80,7 +152,9 @@ export default function HistoryPage() {
   const [activeYear, setActiveYear] = useState('1980');
 
   return (
-    <main className="min-h-screen pt-12 px-6 lg:px-12 max-w-[1400px] mx-auto">
+   <main
+  className={`${playfair.variable} min-h-screen pt-12 px-6 lg:px-12 max-w-[1400px] mx-auto`}
+>
       
       {/* ================= HERO SECTION ================= */}
       <div className="flex flex-col items-center text-center w-full max-w-5xl mx-auto mb-32">
@@ -90,14 +164,28 @@ export default function HistoryPage() {
         </div>
 
         {/* Main Title */}
-        <h1 className="text-[#004342] text-3xl md:text-4xl lg:text-5xl font-playfair mb-8 tracking-tight leading-tight">
-          Four Hundred <span className="italic font-medium">Years</span> of Making, <br className="hidden md:block" /> One Workshop, One Family
-        </h1>
+       <h1 className="history-heading text-3xl md:text-4xl lg:text-5xl mb-8 tracking-tight leading-tight">
+  Four Hundred <span className="heading-italic">Years</span> of Making,
+  <br className="hidden md:block" />
+  One Workshop, One Family
+</h1>
 
         {/* Intro Paragraph */}
-        <p className="text-[13px] md:text-sm text-gray-800 leading-relaxed max-w-4xl mx-auto">
-          The History Of Century Papers Is Inseparable From The History Of Paper Itself And From A Small Community In Rajasthan Who Have Been Its Keepers For Longer Than Most Countries Have Existed.
-        </p>
+   <p className="text-[13px] md:text-sm text-gray-800 leading-relaxed max-w-4xl mx-auto">
+  The History Of Paper Is Related To The History Of Human Culture And
+  Civilization. The Egyptians, The Greeks, And The Romans Wrote On "Papyrus",
+  A Paper-like Material. Today's Paper Was First Developed And Used In China.
+  This Paper Was The Most Important Carrier Of Information In The Past Since
+  Its Birth. There Was A Need To Increase The Population And Transfer
+  Knowledge, Education, And Information To Society On A Large Scale, Which
+  Were The Factors That Forced Paper Growth For A Great Increase. Paper Was A
+  Valuable Product In Earlier Times And Papermaking Became An Art Which Was
+  Often Kept Secret Because Of The Outstanding Benefits Of The Product.
+  Handmade Paper In India Goes Back As Far As The Third Century BC. Handmade
+  Papermaking Is A Traditional Art That Has Been Practised For Generations
+  Together By People Of A Particular Class. This Art Has Been Passed From One
+  Generation To Another Generation Of Artisans.
+</p>
       </div>
 
       {/* ================= CHAPTERS SECTION ================= */}
@@ -116,9 +204,9 @@ export default function HistoryPage() {
               
               {/* Text Block */}
               <div className="flex flex-col flex-1 justify-center">
-                <h2 className="text-[#004342] text-4xl md:text-5xl lg:text-5xl font-playfair tracking-tight mb-8 leading-tight">
-                  {chapter.title}
-                </h2>
+               <h2 className="history-heading text-4xl md:text-5xl lg:text-5xl tracking-tight mb-8 leading-tight">
+  {chapter.title}
+</h2>
                 
                 <div className="flex flex-col gap-6 text-[13px] text-gray-800 leading-relaxed mb-10">
                   {chapter.desc.map((p, i) => (
@@ -128,14 +216,16 @@ export default function HistoryPage() {
               </div>
 
               {/* Image Block (Always on the Right) */}
-              <div className="flex-1 relative w-full aspect-[4/3] lg:aspect-auto min-h-[350px] lg:min-h-[450px] overflow-hidden">
-                <Image 
-                  src={chapter.image} 
-                  alt={`Chapter ${chapter.id}`} 
-                  fill
-                  className="w-full object-contain object-left"
-                />
-              </div>
+             {/* Image Block (Always on the Right) */}
+<div className="chapter-image-wrap">
+  <Image
+    src={chapter.image}
+    alt={`Chapter ${chapter.id}`}
+    fill
+    sizes="450px"
+    className="chapter-image"
+  />
+</div>
 
             </div>
           </section>
@@ -149,9 +239,9 @@ export default function HistoryPage() {
         </p>
         <hr className="border-gray-300 w-full mb-16" />
 
-        <h2 className="text-[#004342] text-3xl md:text-4xl lg:text-5xl font-playfair tracking-tight mb-16">
-          How We <span className="italic">Got</span> Here
-        </h2>
+       <h2 className="history-heading text-3xl md:text-4xl lg:text-5xl tracking-tight mb-16">
+  How We <span className="heading-italic">Got</span> Here
+</h2>
 
         <div className="relative flex flex-col pl-4 md:pl-0">
           {/* The continuous vertical line */}
@@ -215,9 +305,9 @@ export default function HistoryPage() {
           
           {/* Text Block */}
           <div className="flex flex-col flex-1 justify-center">
-            <h2 className="text-[#004342] text-4xl md:text-5xl lg:text-5xl font-playfair tracking-tight mb-8 leading-tight">
-              What Cannot Be <span className="italic">Taught</span> in a Classroom
-            </h2>
+           <h2 className="history-heading text-4xl md:text-5xl lg:text-5xl tracking-tight mb-8 leading-tight">
+  What Cannot Be <span className="heading-italic">Taught</span> in a Classroom
+</h2>
             
             <div className="flex flex-col gap-6 text-[13px] text-gray-800 leading-relaxed mb-10">
               <p>The knowledge held by our craftspeople is not the kind that can be captured in a manual or replicated by a machine.</p>
@@ -247,6 +337,81 @@ export default function HistoryPage() {
           TRADITIONAL MANUFACTURERS OF HANDMADE PAPER SANGANER, SINCE THE 14TH CENTURY.
         </h2>
       </div>
+      <style>{`
+  /* ========================================
+     HISTORY HEADINGS
+     ======================================== */
+
+  .history-heading {
+    font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #004342;
+  }
+
+  /*
+   * Screenshot jaisa:
+   * normal word = strong/bold
+   * highlighted word = thin italic
+   */
+  .history-heading .heading-italic,
+  .heading-italic {
+    font-family: var(--font-playfair), "Playfair Display", Georgia, serif !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+  }
+    /* ================================
+   CHAPTER IMAGE - FIXED SIZE
+   ================================ */
+
+.chapter-image-wrap {
+  position: relative;
+  width: 450px;
+  min-width: 450px;
+  height: 450px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.chapter-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .chapter-image-wrap {
+    width: 450px;
+    min-width: 450px;
+    height: 450px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .chapter-image-wrap {
+    width: 400px;
+    min-width: 400px;
+    height: 400px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .chapter-image-wrap {
+    width: 100%;
+    min-width: 0;
+    height: 320px;
+  }
+
+  .chapter-image {
+    object-fit: contain;
+    object-position: center;
+  }
+}
+`}</style>
 
     </main>
   );
